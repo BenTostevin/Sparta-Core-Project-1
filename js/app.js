@@ -33,7 +33,7 @@ $(document).ready(function(){
 
 
 
-  // move character start
+  // pressed a key start
   setInterval(movePerson, 20);
   var keys = {};
 
@@ -48,11 +48,11 @@ $(document).ready(function(){
   })
 
   function movePerson(){
-    for (var direction in keys) {
-      if (!keys.hasOwnProperty(direction)) continue; // check if key exists
+    for (var keySelected in keys) {
+      if (!keys.hasOwnProperty(keySelected)) continue; // check if key exists
 
       // Move right
-      if (direction == 39) { // if key exists, and is loosely equal to 39
+      if (keySelected == 39) { // if key exists, and is loosely equal to 39
         var characterLeft = $character.offset().left; // calculate sides of character
         var characterRight = characterLeft + $character.width(); // calculate sides of character
         if (characterRight < roomRight) { // boundary of the room
@@ -61,7 +61,7 @@ $(document).ready(function(){
       }
 
       // Move left
-      if (direction == 37) {
+      if (keySelected == 37) {
         var characterLeft = $character.offset().left;
         if (characterLeft > roomLeft) {
           $character.animate({left: "-=5"}, 1);
@@ -69,7 +69,7 @@ $(document).ready(function(){
       }
 
       // Move down
-      if (direction == 40) {
+      if (keySelected == 40) {
         var characterTop = $character.offset().top;
         var characterBottom = characterTop + $character.height();
         if (characterBottom < roomBottom) {
@@ -78,14 +78,14 @@ $(document).ready(function(){
       }
 
       // move up
-      if (direction == 38) {
+      if (keySelected == 38) {
         var characterTop = $character.offset().top;
         if (characterTop > roomTop) {
           $character.animate({top: "-=5"}, 1);
         }
       }
 
-      if (direction == 32) {
+      if (keySelected == 32) {
         // if you are in a red square
         for (var i = 0; i < occupiedDoors.length; i++) { // check all redDoors
           // to check if you are in a red box, check that all of the character's sides are inside the boxes' sides
@@ -99,5 +99,5 @@ $(document).ready(function(){
       }
     }
   }
-  // move character end
+  // end pressed a key
 });
