@@ -4,31 +4,33 @@ $(document).ready(function(){
 
   var $character = $('#character');
   var $room = $('#room');
+  var $door = $('.door');
+  var $redDoor = $('.redDoor');
 
-  // work out where the room edges are
+  // calculates where the room edges are
   var roomLeft = $room.offset().left;
   var roomTop = $room.offset().top;
   var roomRight = roomLeft + $room.width();
   var roomBottom = roomTop + $room.height();
 
-  // intruder arrival gererator start
+
+
+  // intruder gererator start
+  var emptyDoors = [0, 1, 2, 3, 4, 5, 6, 7];
+  var occupiedDoors = [];
 
   setInterval(spawnIntruder, 5000);
 
   function spawnIntruder(){
-    randomDoor = Math.ceil(Math.random()*8)
-    console.log((`#door${randomDoor}`));
-    $(`#door${randomDoor}`).toggleClass('redDoor');
+
+    var randomEmptyDoor = Math.floor(Math.random()*emptyDoors.length); // randomly selects an empty door
+
+    $(`#door${emptyDoors[randomEmptyDoor]}`).toggleClass('redDoor'); // changes the class of that door, hence changing colour
+    occupiedDoors.push(emptyDoors[randomEmptyDoor]);
+    emptyDoors.splice(randomEmptyDoor, 1); // removes the newly occupied door from the emptyDoors array
   }
+  // intruder gererator end
 
-
-
-
-
-
-
-
-  // intruder arrival gererator end
 
 
   // move character start
@@ -80,6 +82,19 @@ $(document).ready(function(){
         var characterTop = $character.offset().top;
         if (characterTop > roomTop) {
           $character.animate({top: "-=5"}, 1);
+        }
+      }
+
+      if (direction == 32) {
+        // if you are in a red square
+        for (var i = 0; i < occupiedDoors.length; i++) { // check all redDoors
+          // to check if you are in a red box, check that all of the character's sides are inside the boxes' sides
+          if ($(`#door${occupiedDoors[i]}`)[0].offsetLeft < $character[0].offsetLeft &&
+              $(`#door${occupiedDoors[i]}`)[0].offsetLeft + 40 > $character[0].offsetLeft && // 40 is the difference between the width/height of the door hitbox and the width/height of the character
+              $(`#door${occupiedDoors[i]}`)[0].offsetTop < $character[0].offsetTop &&
+              $(`#door${occupiedDoors[i]}`)[0].offsetTop + 40 > $character[0].offsetTop) {
+            console.log('you pressed space bar inside a red box');
+          }
         }
       }
     }
