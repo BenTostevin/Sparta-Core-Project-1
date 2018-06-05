@@ -94,8 +94,9 @@ $(document).ready(function(){
               $(`#door${occupiedDoors[i]}`)[0].offsetTop < $character[0].offsetTop &&
               $(`#door${occupiedDoors[i]}`)[0].offsetTop + 40 > $character[0].offsetTop) {
 
+            // remember the door that you are currently at
             var targetDoor = $(`#door${occupiedDoors[i]}`);
-          
+
             // change door back to green
             setInterval(protectDoor, 3000);
             function protectDoor() {
