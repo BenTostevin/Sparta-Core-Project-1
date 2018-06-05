@@ -36,8 +36,7 @@ $(document).ready(function(){
   var emptyDoors = [0, 1, 2, 3, 4, 5, 6, 7];
   var occupiedDoors = [];
 
-  setInterval(spawnIntruder, 5000);
-
+  setInterval(spawnIntruder, 2000);
   function spawnIntruder(){
     // first check if there is a redDoor already. If so, add 1 to it
     for (var i = 0; i < 8; i++) {
@@ -49,6 +48,7 @@ $(document).ready(function(){
         }
       }
     }
+    console.log(redDoorTimer);
     // check red door end
 
 
@@ -124,7 +124,17 @@ $(document).ready(function(){
               $(`#door${occupiedDoors[i]}`)[0].offsetLeft + 40 > $character[0].offsetLeft && // 40 is the difference between the width/height of the door hitbox and the width/height of the character
               $(`#door${occupiedDoors[i]}`)[0].offsetTop < $character[0].offsetTop &&
               $(`#door${occupiedDoors[i]}`)[0].offsetTop + 40 > $character[0].offsetTop) {
-            console.log('you pressed space bar inside a red box');
+
+            // remember the door that you are currently at
+            var targetDoor = $(`#door${occupiedDoors[i]}`);
+
+            // change door back to green
+            targetDoor.removeClass('redDoor');
+
+            redDoorTimer[occupiedDoors[i]] = 0;
+            emptyDoors.push(occupiedDoors[i]) // adds door back to emptyDoors array
+            occupiedDoors.splice(i,1); // remove this door from occupiedDoors array
+
           }
         }
       }
