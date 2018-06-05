@@ -23,6 +23,16 @@
   padding: 5%;
 }
 
+.gameOver {
+  display: none;
+  width: 90%;
+  height: 90%;
+  background: black;
+  color: white;
+  position: absolute;
+  padding: 5%;
+}
+
 .score {
   position: absolute;
 }

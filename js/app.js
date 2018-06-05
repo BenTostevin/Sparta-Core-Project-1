@@ -1,15 +1,10 @@
 $(document).ready(function(){
 
-  var timerRunning = false;
-  var $startButton = $('#startButton')
-
-  // Instructions - start
-  var $instructionsButton = $('#instructionsButton');
   var $instructions = $('.instructions');
+  var $gameOver = $('.gameOver');
 
-
-
-  // Instructions - end
+  var $startButton = $('#startButton');
+  var $instructionsButton = $('#instructionsButton');
 
   var interval;
 
@@ -33,7 +28,6 @@ $(document).ready(function(){
   var score = 0;
   var alive = false;
   var scoreInterval;
-
 
 
   function addScore() {
@@ -64,6 +58,8 @@ $(document).ready(function(){
           clearInterval(scoreInterval) // ... The score will stop increasing
           clearInterval(intruderInterval) // game stops running
           clearInterval(pressKeys) // disables keys after game
+          $gameOver.toggle(); // brings up game over screen
+          $('#yourScore')[0].textContent = score;
         }
       }
     }
