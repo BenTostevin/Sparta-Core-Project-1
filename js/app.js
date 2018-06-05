@@ -9,7 +9,7 @@ $(document).ready(function(){
 
   var interval;
 
-  var $character = $('#character');
+  var $character = $('.character');
   var $room = $('#room');
   var $door = $('.door');
   var $redDoor = $('.redDoor');

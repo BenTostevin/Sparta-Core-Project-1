@@ -9,13 +9,16 @@
   border: 1px black solid;
 }
 
-#character {
-  height: 48px;
-  width: 32px;
+.character {
+  height: 54px;
+  width: 36px;
+  position: absolute;
+}
+
+#front {
   background-image: url(../images/indianajonesFront.png);
   background-repeat: no-repeat;
   background-size: cover;
-  position: absolute;
 }
 
 .instructions {
