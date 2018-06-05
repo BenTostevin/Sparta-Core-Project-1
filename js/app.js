@@ -97,6 +97,8 @@ $(document).ready(function(){
             // remember the door that you are currently at
             var targetDoor = $(`#door${occupiedDoors[i]}`);
 
+            console.log(targetDoor[0].textContent);
+
             // change door back to green
             setInterval(protectDoor, 3000);
             function protectDoor() {
