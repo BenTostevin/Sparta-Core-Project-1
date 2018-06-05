@@ -13,6 +13,10 @@
   position: absolute;
 }
 
+.score {
+  position: absolute;
+}
+
 .door {
   height: 80px;
   width: 80px;
