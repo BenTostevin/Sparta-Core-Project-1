@@ -7,6 +7,9 @@ $(document).ready(function(){
   var $door = $('.door');
   var $redDoor = $('.redDoor');
 
+  var redDoorTimer = [0, 0, 0, 0, 0, 0, 0, 0];
+
+
   // calculates where the room edges are
   var roomLeft = $room.offset().left;
   var roomTop = $room.offset().top;
@@ -19,10 +22,11 @@ $(document).ready(function(){
 
   setInterval(addScore, 100);
   function addScore() {
-    if (alive === true) {
+    //might need a function here to check the variable 'alive'
+
+    if (alive = true) {
       score += 1;
       $('#score')[0].textContent = score;
-      // console.log(score);
     }
   }
   // keeping score - end
@@ -35,11 +39,27 @@ $(document).ready(function(){
   setInterval(spawnIntruder, 5000);
 
   function spawnIntruder(){
+    // first check if there is a redDoor already. If so, add 1 to it
+    for (var i = 0; i < 8; i++) {
+      if (($(`#door${i}`)[0].classList[1] == 'redDoor')) {
+        redDoorTimer[i] += 1;
+        console.log(redDoorTimer);
+
+        if (redDoorTimer[i] >= 2) {
+          alive = false;
+        }
+
+      }
+    }
+    // check red door end
+
 
     var randomEmptyDoor = Math.floor(Math.random()*emptyDoors.length); // randomly selects an empty door
 
     $(`#door${emptyDoors[randomEmptyDoor]}`).toggleClass('redDoor'); // changes the class of that door, hence changing colour
+
     occupiedDoors.push(emptyDoors[randomEmptyDoor]);
+
     emptyDoors.splice(randomEmptyDoor, 1); // removes the newly occupied door from the emptyDoors array
   }
   // intruder gererator end
