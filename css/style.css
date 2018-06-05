@@ -1,0 +1,14 @@
+#room {
+  width:400px;
+  height:400px;
+  margin: auto;
+  background:  rgb(170, 170, 170);
+  position: relative;
+}
+
+#character {
+  height:50px;
+  width:50px;
+  background: blue;
+  position: absolute;
+}
