@@ -43,12 +43,10 @@ $(document).ready(function(){
     for (var i = 0; i < 8; i++) {
       if (($(`#door${i}`)[0].classList[1] == 'redDoor')) {
         redDoorTimer[i] += 1;
-        console.log(redDoorTimer);
-
         if (redDoorTimer[i] >= 2) {
           alive = false;
+          console.log('game over');
         }
-
       }
     }
     // check red door end
