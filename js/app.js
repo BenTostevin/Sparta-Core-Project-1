@@ -5,6 +5,7 @@ $(document).ready(function(){
 
   var $startButton = $('#startButton');
   var $instructionsButton = $('#instructionsButton');
+  var $restart = $('#restart');
 
   var interval;
 
@@ -167,6 +168,11 @@ $(document).ready(function(){
     scoreInterval = setInterval(addScore, 100);
     intruderInterval = setInterval(spawnIntruder, 2000);
     pressKeys = setInterval(movePerson, 20);
+  });
+
+  $restart.click(function() {
+    console.log('working');
+    location.reload();
   });
 
 });
