@@ -14,7 +14,6 @@ $(document).ready(function(){
   var roomBottom = roomTop + $room.height();
 
 
-
   // intruder gererator start
   var emptyDoors = [0, 1, 2, 3, 4, 5, 6, 7];
   var occupiedDoors = [];
@@ -25,7 +24,7 @@ $(document).ready(function(){
 
     var randomEmptyDoor = Math.floor(Math.random()*emptyDoors.length); // randomly selects an empty door
 
-    $(`#door${emptyDoors[randomEmptyDoor]}`).toggleClass('redDoor'); // changes the class of that door, hence changing colour
+    $(`#door${emptyDoors[randomEmptyDoor]}`).toggleClass('redDoor'); // adds the class of that door, hence changing colour
     occupiedDoors.push(emptyDoors[randomEmptyDoor]);
     emptyDoors.splice(randomEmptyDoor, 1); // removes the newly occupied door from the emptyDoors array
   }
@@ -85,6 +84,16 @@ $(document).ready(function(){
         }
       }
 
+      var tempArr = [];
+      $(document).keypress(function(e){
+        if (e.keyCode == 32) {
+          tempArr.push(e.keyCode);
+        }
+        if (tempArr.length > 3000) {
+          console.log('fixed');
+        }
+      })
+
       if (keySelected == 32) {
         // if you are in a red square
         for (var i = 0; i < occupiedDoors.length; i++) { // check all redDoors
@@ -93,7 +102,16 @@ $(document).ready(function(){
               $(`#door${occupiedDoors[i]}`)[0].offsetLeft + 40 > $character[0].offsetLeft && // 40 is the difference between the width/height of the door hitbox and the width/height of the character
               $(`#door${occupiedDoors[i]}`)[0].offsetTop < $character[0].offsetTop &&
               $(`#door${occupiedDoors[i]}`)[0].offsetTop + 40 > $character[0].offsetTop) {
-            console.log('you pressed space bar inside a red box');
+
+            // remember the door that you are currently at
+            var targetDoor = $(`#door${occupiedDoors[i]}`);
+
+            // change door back to green
+            targetDoor.removeClass('redDoor');
+
+            emptyDoors.push(occupiedDoors[i]) // adds door back to emptyDoors array
+            occupiedDoors.splice(i,1); // remove this door from occupiedDoors array
+
           }
         }
       }
