@@ -13,7 +13,20 @@ $(document).ready(function(){
   var roomRight = roomLeft + $room.width();
   var roomBottom = roomTop + $room.height();
 
+  // keeping score - start
+  var score = 0;
+  var alive = true;
 
+  setInterval(addScore, 100);
+  function addScore() {
+    if (alive === true) {
+      score += 1;
+      // console.log(score);
+    }
+  }
+  // keeping score - end
+
+  console.log($('#score'))
 
   // intruder gererator start
   var emptyDoors = [0, 1, 2, 3, 4, 5, 6, 7];
