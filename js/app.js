@@ -14,7 +14,6 @@ $(document).ready(function(){
   var roomBottom = roomTop + $room.height();
 
 
-
   // intruder gererator start
   var emptyDoors = [0, 1, 2, 3, 4, 5, 6, 7];
   var occupiedDoors = [];
@@ -120,11 +119,3 @@ $(document).ready(function(){
   }
   // end pressed a key
 });
-
-// targetDoor.removeClass('redDoor');
-//
-// emptyDoors.push(occupiedDoors[i]);
-// console.log(occupiedDoors[i]);
-//
-// emptyDoors.splice(randomEmptyDoor, 1);
-// console.log(randomEmptyDoor);
