@@ -17,6 +17,8 @@ $(document).ready(function(){
   // keeps track of how long a red door has been left red for.
   var redDoorTimer = [0, 0, 0, 0, 0, 0, 0, 0];
 
+  var emptyDoors = [0, 1, 2, 3, 4, 5, 6, 7];
+  var occupiedDoors = [];
 
   // calculates where the room edges are
   var roomLeft = $room.offset().left;
@@ -42,11 +44,6 @@ $(document).ready(function(){
 
 
   // intruder gererator start
-  var emptyDoors = [0, 1, 2, 3, 4, 5, 6, 7];
-  var occupiedDoors = [];
-
-
-
   function spawnIntruder(){
 
     // check red doors start - first check if there is a redDoor already. If so, add 1 to it
@@ -55,7 +52,7 @@ $(document).ready(function(){
         redDoorTimer[i] += 1;
 
         // >>>End of game condition<<<
-        if (redDoorTimer[i] >= 2) { // 2*2000 = 4000 = 4 seconds. If any door is left red for 4 seconds...
+        if (redDoorTimer[i] >= 3) { // 2*2000 = 4000 = 4 seconds. If any door is left red for 4 seconds...
           clearInterval(scoreInterval) // ... The score will stop increasing
           clearInterval(intruderInterval) // game stops running
           clearInterval(pressKeys) // disables keys after game
@@ -143,9 +140,9 @@ $(document).ready(function(){
         for (var i = 0; i < occupiedDoors.length; i++) { // check all redDoors
           // to check if you are in a red box, check that all of the character's sides are inside the boxes' sides
           if ($(`#door${occupiedDoors[i]}`)[0].offsetLeft < $character[0].offsetLeft &&
-          $(`#door${occupiedDoors[i]}`)[0].offsetLeft + 40 > $character[0].offsetLeft && // 40 is the difference between the width/height of the door hitbox and the width/height of the character
+          $(`#door${occupiedDoors[i]}`)[0].offsetLeft + 48 > $character[0].offsetLeft && // 40 is the difference between the width/height of the door hitbox and the width/height of the character
           $(`#door${occupiedDoors[i]}`)[0].offsetTop < $character[0].offsetTop &&
-          $(`#door${occupiedDoors[i]}`)[0].offsetTop + 40 > $character[0].offsetTop) {
+          $(`#door${occupiedDoors[i]}`)[0].offsetTop + 32 > $character[0].offsetTop) {
 
             // remember the door that you are currently at
             var targetDoor = $(`#door${occupiedDoors[i]}`);
@@ -166,7 +163,7 @@ $(document).ready(function(){
   $startButton.click(function(){
     $instructions.toggle();
     scoreInterval = setInterval(addScore, 100);
-    intruderInterval = setInterval(spawnIntruder, 2000);
+    intruderInterval = setInterval(spawnIntruder, 1800);
     pressKeys = setInterval(movePerson, 20);
   });
 
