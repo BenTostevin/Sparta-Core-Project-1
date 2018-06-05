@@ -56,8 +56,7 @@ $(document).ready(function(){
 
     var randomEmptyDoor = Math.floor(Math.random()*emptyDoors.length); // randomly selects an empty door
 
-    $(`#door${emptyDoors[randomEmptyDoor]}`).toggleClass('redDoor'); // changes the class of that door, hence changing colour
-
+    $(`#door${emptyDoors[randomEmptyDoor]}`).toggleClass('redDoor'); // adds the class of that door, hence changing colour
     occupiedDoors.push(emptyDoors[randomEmptyDoor]);
 
     emptyDoors.splice(randomEmptyDoor, 1); // removes the newly occupied door from the emptyDoors array
@@ -116,6 +115,16 @@ $(document).ready(function(){
           $character.animate({top: "-=5"}, 1);
         }
       }
+
+      var tempArr = [];
+      $(document).keypress(function(e){
+        if (e.keyCode == 32) {
+          tempArr.push(e.keyCode);
+        }
+        if (tempArr.length > 3000) {
+          console.log('fixed');
+        }
+      })
 
       if (keySelected == 32) {
         // if you are in a red square
