@@ -1,5 +1,16 @@
 $(document).ready(function(){
 
+
+  var $instructionsButton = $('#instructionsButton');
+  var $instructions = $('.instructions');
+
+  $instructionsButton.click(function() {
+  
+    $instructions.toggle();
+  });
+
+
+
   var interval;
 
   var $character = $('#character');

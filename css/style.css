@@ -13,6 +13,22 @@
   position: absolute;
 }
 
+.instructions {
+  width: 400px;
+  height: 400px;
+  background: black;
+  color: white;
+  position: absolute;
+}
+
+#readInstructions {
+  display: block;
+}
+
+#hideInstructions {
+  display: none;
+}
+
 .score {
   position: absolute;
 }
