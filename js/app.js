@@ -85,6 +85,16 @@ $(document).ready(function(){
         }
       }
 
+      var tempArr = [];
+      $(document).keypress(function(e){
+        if (e.keyCode == 32) {
+          tempArr.push(e.keyCode);
+        }
+        if (tempArr.length > 3000) {
+          console.log('fixed');
+        }
+      })
+
       if (keySelected == 32) {
         // if you are in a red square
         for (var i = 0; i < occupiedDoors.length; i++) { // check all redDoors
@@ -97,13 +107,11 @@ $(document).ready(function(){
             // remember the door that you are currently at
             var targetDoor = $(`#door${occupiedDoors[i]}`);
 
-            console.log(targetDoor[0].textContent);
-
             // change door back to green
-            setInterval(protectDoor, 3000);
-            function protectDoor() {
-              targetDoor.removeClass('redDoor');
-            }
+            targetDoor.removeClass('redDoor');
+
+            emptyDoors.push(occupiedDoors[i]) // adds door back to emptyDoors array
+            occupiedDoors.splice(i,1); // remove this door from occupiedDoors array
 
           }
         }
@@ -112,3 +120,11 @@ $(document).ready(function(){
   }
   // end pressed a key
 });
+
+// targetDoor.removeClass('redDoor');
+//
+// emptyDoors.push(occupiedDoors[i]);
+// console.log(occupiedDoors[i]);
+//
+// emptyDoors.splice(randomEmptyDoor, 1);
+// console.log(randomEmptyDoor);
