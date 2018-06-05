@@ -25,7 +25,7 @@ $(document).ready(function(){
 
     var randomEmptyDoor = Math.floor(Math.random()*emptyDoors.length); // randomly selects an empty door
 
-    $(`#door${emptyDoors[randomEmptyDoor]}`).toggleClass('redDoor'); // changes the class of that door, hence changing colour
+    $(`#door${emptyDoors[randomEmptyDoor]}`).toggleClass('redDoor'); // adds the class of that door, hence changing colour
     occupiedDoors.push(emptyDoors[randomEmptyDoor]);
     emptyDoors.splice(randomEmptyDoor, 1); // removes the newly occupied door from the emptyDoors array
   }
@@ -94,9 +94,13 @@ $(document).ready(function(){
               $(`#door${occupiedDoors[i]}`)[0].offsetTop < $character[0].offsetTop &&
               $(`#door${occupiedDoors[i]}`)[0].offsetTop + 40 > $character[0].offsetTop) {
 
+            var targetDoor = $(`#door${occupiedDoors[i]}`);
+          
             // change door back to green
-            // setInterval(protectDoor, 3000);
-            $(`#door${occupiedDoors[i]}`).removeClass('redDoor')
+            setInterval(protectDoor, 3000);
+            function protectDoor() {
+              targetDoor.removeClass('redDoor');
+            }
 
           }
         }
