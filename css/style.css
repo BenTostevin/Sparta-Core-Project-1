@@ -14,19 +14,13 @@
 }
 
 .instructions {
-  width: 400px;
-  height: 400px;
+  display: block;
+  width: 90%;
+  height: 90%;
   background: black;
   color: white;
   position: absolute;
-}
-
-#readInstructions {
-  display: block;
-}
-
-#hideInstructions {
-  display: none;
+  padding: 5%;
 }
 
 .score {
