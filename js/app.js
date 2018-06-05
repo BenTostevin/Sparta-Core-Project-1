@@ -93,7 +93,11 @@ $(document).ready(function(){
               $(`#door${occupiedDoors[i]}`)[0].offsetLeft + 40 > $character[0].offsetLeft && // 40 is the difference between the width/height of the door hitbox and the width/height of the character
               $(`#door${occupiedDoors[i]}`)[0].offsetTop < $character[0].offsetTop &&
               $(`#door${occupiedDoors[i]}`)[0].offsetTop + 40 > $character[0].offsetTop) {
-            console.log('you pressed space bar inside a red box');
+
+            // change door back to green
+            // setInterval(protectDoor, 3000);
+            $(`#door${occupiedDoors[i]}`).removeClass('redDoor')
+
           }
         }
       }
