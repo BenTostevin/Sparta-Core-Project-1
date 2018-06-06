@@ -2,15 +2,43 @@
   width: 400px;
   height: 400px;
   margin: auto;
-  background: rgb(170, 170, 170);
   position: relative;
+  background-image: url(../images/floor.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 1px black solid;
 }
 
-#character {
-  height: 40px;
-  width: 40px;
-  background: blue;
+.character {
+  height: 54px;
+  width: 36px;
   position: absolute;
+}
+
+#front {
+  background-image: url(../images/indianajonesFront.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.instructions {
+  display: block;
+  width: 90%;
+  height: 90%;
+  background: black;
+  color: white;
+  position: absolute;
+  padding: 5%;
+}
+
+.gameOver {
+  display: none;
+  width: 90%;
+  height: 90%;
+  background: black;
+  color: white;
+  position: absolute;
+  padding: 5%;
 }
 
 .score {
@@ -22,6 +50,7 @@
   width: 80px;
   background: green;
   position: absolute;
+  opacity: 0.5;
 }
 
 .redDoor {
@@ -29,6 +58,7 @@
   width: 80px;
   background: red;
   position: absolute;
+  opacity: 0.5;
 }
 
 /* Positions of doors */
