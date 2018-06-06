@@ -3,9 +3,7 @@
   height: 400px;
   margin: auto;
   position: relative;
-  background-image: url(../images/floor.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-image: url(../images/Room2.png);
   border: 1px black solid;
 }
 
