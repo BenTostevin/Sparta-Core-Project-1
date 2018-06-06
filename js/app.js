@@ -45,9 +45,11 @@ $(document).ready(function(){
         $('#timer')[0].textContent = time;
 
         // add red door timer here
-        // for (var i = 0; i < 8; i++) {
-        //   console.log($('#door'));
-        // }
+        for (var i = 0; i < 8; i++) {
+          if (($(`#door${i}`)[0].classList[1] == 'redDoor')) {
+            $(`#door${i}`)[0].textContent -= 1;
+          }
+        }
       }
     }
   }
@@ -77,7 +79,7 @@ $(document).ready(function(){
     var randomEmptyDoor = Math.floor(Math.random()*emptyDoors.length); // randomly selects an empty door
 
     $(`#door${emptyDoors[randomEmptyDoor]}`).toggleClass('redDoor'); // adds the class of that door, hence changing colour
-    $(`#door${emptyDoors[randomEmptyDoor]}`)[0].textContent = 4;
+    $(`#door${emptyDoors[randomEmptyDoor]}`)[0].textContent = 6;
 
     occupiedDoors.push(emptyDoors[randomEmptyDoor]);
 
