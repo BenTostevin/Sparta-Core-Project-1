@@ -1,5 +1,12 @@
 $(document).ready(function(){
 
+  var $instructions = $('.instructions');
+  var $gameOver = $('.gameOver');
+
+  var $startButton = $('#startButton');
+  var $instructionsButton = $('#instructionsButton');
+  var $restart = $('#restart');
+
   var interval;
 
   var $character = $('#character');
@@ -20,10 +27,10 @@ $(document).ready(function(){
 
   // keeping score - start
   var score = 0;
-  var alive = true;
+  var alive = false;
   var scoreInterval;
 
-  scoreInterval = setInterval(addScore, 100);
+
   function addScore() {
     //might need a function here to check the variable 'alive'
     if (alive = true) {
@@ -38,7 +45,8 @@ $(document).ready(function(){
   var emptyDoors = [0, 1, 2, 3, 4, 5, 6, 7];
   var occupiedDoors = [];
 
-  setInterval(spawnIntruder, 2000);
+
+
   function spawnIntruder(){
 
     // check red doors start - first check if there is a redDoor already. If so, add 1 to it
@@ -47,8 +55,12 @@ $(document).ready(function(){
         redDoorTimer[i] += 1;
 
         // >>>End of game condition<<<
-        if (redDoorTimer[i] >= 2) { // 2*2000 = 4000 = 4 seconds. If any door is left red for 4 seconds...
+        if (redDoorTimer[i] >= 3) { // 2*2000 = 4000 = 4 seconds. If any door is left red for 4 seconds...
           clearInterval(scoreInterval) // ... The score will stop increasing
+          clearInterval(intruderInterval) // game stops running
+          clearInterval(pressKeys) // disables keys after game
+          $gameOver.toggle(); // brings up game over screen
+          $('#yourScore')[0].textContent = score;
         }
       }
     }
@@ -65,7 +77,7 @@ $(document).ready(function(){
 
 
   // pressed a key start
-  setInterval(movePerson, 20);
+
   var keys = {};
 
   // When a key is pushed down, it is added to the 'keys' object
@@ -150,4 +162,17 @@ $(document).ready(function(){
     }
   }
   // end pressed a key
+
+  $startButton.click(function(){
+    $instructions.toggle();
+    scoreInterval = setInterval(addScore, 100);
+    intruderInterval = setInterval(spawnIntruder, 1800);
+    pressKeys = setInterval(movePerson, 20);
+  });
+
+  $restart.click(function() {
+    console.log('working');
+    location.reload();
+  });
+
 });
