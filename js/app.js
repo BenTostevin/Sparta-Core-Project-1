@@ -29,6 +29,7 @@ $(document).ready(function(){
 
   // keeping score - start
   var score = 0;
+  var time = 0;
   var alive = false;
   var scoreInterval;
 
@@ -36,8 +37,13 @@ $(document).ready(function(){
   function addScore() {
     //might need a function here to check the variable 'alive'
     if (alive = true) {
-      score += 1; // score goes up by 10 points every second
+      score++; // score goes up by 10 points every second
       $('#score')[0].textContent = score;
+
+      if (score % 10 === 0) {
+        time++;
+        $('#timer')[0].textContent = time;
+      }
     }
   }
   // keeping score - end
