@@ -32,20 +32,6 @@ $(document).ready(function(){
   var characterRight = characterLeft + $character.width(); // calculate sides of character
 
 
-  console.log(roomLeft);
-  console.log($room.height());
-  console.log(roomRight);
-
-  console.log(roomTop);
-  console.log($room.height());
-  console.log(roomBottom);
-
-  console.log(characterTop);
-  console.log(characterBottom);
-  console.log(characterLeft);
-  console.log(characterRight);
-
-
   // keeping score - start
   var score = 0;
   var alive = false;
@@ -113,12 +99,11 @@ $(document).ready(function(){
       if (keySelected == 39) { // if key exists, and is loosely equal to 39
         var characterLeft = $character.offset().left; // calculate sides of character
         var characterRight = characterLeft + $character.width(); // calculate sides of character
-
         //change direction character is facing
         $('.character').attr('id','right');
 
-        if (characterRight < $room.width()) { // boundary of the room
-          $character.animate({left: "+=5"}, 1);
+        if (characterRight < (roomRight - 2)) { // boundary of the room
+          $character.animate({left: "+=2"}, 0);
         }
       }
 
@@ -130,7 +115,7 @@ $(document).ready(function(){
         $('.character').attr('id','left');
 
         if (characterLeft > roomLeft) {
-          $character.animate({left: "-=5"}, 1);
+          $character.animate({left: "-=2"}, 0);
         }
       }
 
@@ -142,8 +127,8 @@ $(document).ready(function(){
         //change direction character is facing
         $('.character').attr('id','front');
 
-        if (characterBottom < roomBottom) {
-          $character.animate({top: "+=5"}, 1);
+        if (characterBottom < (roomBottom - 2)) {
+          $character.animate({top: "+=2"}, 0);
         }
       }
 
@@ -155,7 +140,7 @@ $(document).ready(function(){
         $('.character').attr('id','back');
 
         if (characterTop > roomTop) {
-          $character.animate({top: "-=5"}, 1);
+          $character.animate({top: "-=2"}, 0);
         }
       }
 
@@ -188,7 +173,7 @@ $(document).ready(function(){
     $instructions.toggle();
     scoreInterval = setInterval(addScore, 100);
     intruderInterval = setInterval(spawnIntruder, 1800);
-    pressKeys = setInterval(movePerson, 20);
+    pressKeys = setInterval(movePerson, 10);
   });
 
   $restart.click(function() {
