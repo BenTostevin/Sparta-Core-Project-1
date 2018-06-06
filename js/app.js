@@ -40,9 +40,14 @@ $(document).ready(function(){
       score++; // score goes up by 10 points every second
       $('#score')[0].textContent = score;
 
-      if (score % 10 === 0) {
+      if (score % 10 === 0) { // every second
         time++;
         $('#timer')[0].textContent = time;
+
+        // add red door timer here
+        // for (var i = 0; i < 8; i++) {
+        //   console.log($('#door'));
+        // }
       }
     }
   }
@@ -72,6 +77,8 @@ $(document).ready(function(){
     var randomEmptyDoor = Math.floor(Math.random()*emptyDoors.length); // randomly selects an empty door
 
     $(`#door${emptyDoors[randomEmptyDoor]}`).toggleClass('redDoor'); // adds the class of that door, hence changing colour
+    $(`#door${emptyDoors[randomEmptyDoor]}`)[0].textContent = 4;
+
     occupiedDoors.push(emptyDoors[randomEmptyDoor]);
 
     emptyDoors.splice(randomEmptyDoor, 1); // removes the newly occupied door from the emptyDoors array
@@ -155,6 +162,9 @@ $(document).ready(function(){
 
             // change door back to green
             targetDoor.removeClass('redDoor');
+
+            // remove red door timer
+            targetDoor[0].textContent = "";
 
             redDoorTimer[occupiedDoors[i]] = 0;
             emptyDoors.push(occupiedDoors[i]) // adds door back to emptyDoors array
