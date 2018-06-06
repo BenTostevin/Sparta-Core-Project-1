@@ -3,13 +3,14 @@
   height: 400px;
   margin: auto;
   position: relative;
-  background-image: url(../images/Room2.png);
-  border: 1px black solid;
+  background-image: url(../images/Room400x400.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .character {
   height: 54px;
-  width: 36px;
+  width: 30px;
   position: absolute;
 }
 
@@ -23,7 +24,7 @@
   display: block;
   width: 90%;
   height: 90%;
-  background: black;
+  background-image: url(../images/Room2.png);
   color: white;
   position: absolute;
   padding: 5%;
@@ -33,7 +34,7 @@
   display: none;
   width: 90%;
   height: 90%;
-  background: black;
+  background-image: url(../images/Room2.png);
   color: white;
   position: absolute;
   padding: 5%;

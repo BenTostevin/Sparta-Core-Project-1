@@ -26,6 +26,25 @@ $(document).ready(function(){
   var roomRight = roomLeft + $room.width();
   var roomBottom = roomTop + $room.height();
 
+  var characterTop = $character.offset().top;
+  var characterBottom = characterTop + $character.height();
+  var characterLeft = $character.offset().left; // calculate sides of character
+  var characterRight = characterLeft + $character.width(); // calculate sides of character
+
+
+  console.log(roomLeft);
+  console.log($room.height());
+  console.log(roomRight);
+
+  console.log(roomTop);
+  console.log($room.height());
+  console.log(roomBottom);
+
+  console.log(characterTop);
+  console.log(characterBottom);
+  console.log(characterLeft);
+  console.log(characterRight);
+
 
   // keeping score - start
   var score = 0;
@@ -74,7 +93,6 @@ $(document).ready(function(){
 
 
   // pressed a key start
-
   var keys = {};
 
   // When a key is pushed down, it is added to the 'keys' object
@@ -93,9 +111,11 @@ $(document).ready(function(){
 
       // Move right
       if (keySelected == 39) { // if key exists, and is loosely equal to 39
+        console.log(roomRight);
+
         var characterLeft = $character.offset().left; // calculate sides of character
         var characterRight = characterLeft + $character.width(); // calculate sides of character
-        if (characterRight < roomRight) { // boundary of the room
+        if (characterRight < $room.width()) { // boundary of the room
           $character.animate({left: "+=5"}, 1);
         }
       }
@@ -110,6 +130,8 @@ $(document).ready(function(){
 
       // Move down
       if (keySelected == 40) {
+        console.log(roomBottom);
+
         var characterTop = $character.offset().top;
         var characterBottom = characterTop + $character.height();
         if (characterBottom < roomBottom) {
@@ -139,10 +161,10 @@ $(document).ready(function(){
         // if you are in a red square
         for (var i = 0; i < occupiedDoors.length; i++) { // check all redDoors
           // to check if you are in a red box, check that all of the character's sides are inside the boxes' sides
-          if ($(`#door${occupiedDoors[i]}`)[0].offsetLeft < $character[0].offsetLeft &&
-          $(`#door${occupiedDoors[i]}`)[0].offsetLeft + 48 > $character[0].offsetLeft && // 40 is the difference between the width/height of the door hitbox and the width/height of the character
-          $(`#door${occupiedDoors[i]}`)[0].offsetTop < $character[0].offsetTop &&
-          $(`#door${occupiedDoors[i]}`)[0].offsetTop + 32 > $character[0].offsetTop) {
+          if ($(`#door${occupiedDoors[i]}`)[0].offsetLeft <= $character[0].offsetLeft &&
+          $(`#door${occupiedDoors[i]}`)[0].offsetLeft + 50 >= $character[0].offsetLeft && // 40 is the difference between the width/height of the door hitbox and the width/height of the character
+          $(`#door${occupiedDoors[i]}`)[0].offsetTop <= $character[0].offsetTop &&
+          $(`#door${occupiedDoors[i]}`)[0].offsetTop + 26 >= $character[0].offsetTop) {
 
             // remember the door that you are currently at
             var targetDoor = $(`#door${occupiedDoors[i]}`);
