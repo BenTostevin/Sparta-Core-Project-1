@@ -20,6 +20,24 @@
   background-size: cover;
 }
 
+#back {
+  background-image: url(../images/indianajonesBack.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#left {
+  background-image: url(../images/indianajonesLeft.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#right {
+  background-image: url(../images/indianajonesRight.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .instructions {
   display: block;
   width: 90%;

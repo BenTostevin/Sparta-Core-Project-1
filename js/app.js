@@ -111,10 +111,12 @@ $(document).ready(function(){
 
       // Move right
       if (keySelected == 39) { // if key exists, and is loosely equal to 39
-        console.log(roomRight);
-
         var characterLeft = $character.offset().left; // calculate sides of character
         var characterRight = characterLeft + $character.width(); // calculate sides of character
+
+        //change direction character is facing
+        $('.character').attr('id','right');
+
         if (characterRight < $room.width()) { // boundary of the room
           $character.animate({left: "+=5"}, 1);
         }
@@ -123,6 +125,10 @@ $(document).ready(function(){
       // Move left
       if (keySelected == 37) {
         var characterLeft = $character.offset().left;
+
+        //change direction character is facing
+        $('.character').attr('id','left');
+
         if (characterLeft > roomLeft) {
           $character.animate({left: "-=5"}, 1);
         }
@@ -130,10 +136,12 @@ $(document).ready(function(){
 
       // Move down
       if (keySelected == 40) {
-        console.log(roomBottom);
-
         var characterTop = $character.offset().top;
         var characterBottom = characterTop + $character.height();
+
+        //change direction character is facing
+        $('.character').attr('id','front');
+
         if (characterBottom < roomBottom) {
           $character.animate({top: "+=5"}, 1);
         }
@@ -142,20 +150,14 @@ $(document).ready(function(){
       // move up
       if (keySelected == 38) {
         var characterTop = $character.offset().top;
+
+        //change direction character is facing
+        $('.character').attr('id','back');
+
         if (characterTop > roomTop) {
           $character.animate({top: "-=5"}, 1);
         }
       }
-
-      var tempArr = [];
-      $(document).keypress(function(e){
-        if (e.keyCode == 32) {
-          tempArr.push(e.keyCode);
-        }
-        if (tempArr.length > 3000) {
-          console.log('fixed');
-        }
-      })
 
       if (keySelected == 32) {
         // if you are in a red square
@@ -190,7 +192,6 @@ $(document).ready(function(){
   });
 
   $restart.click(function() {
-    console.log('working');
     location.reload();
   });
 
