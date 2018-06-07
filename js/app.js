@@ -66,7 +66,6 @@ $(document).ready(function(){
       if (($(`.door${i}`)[0].classList[2] == 'redDoor')) {
 
         redDoorTimer[i] += 1;
-        console.log(redDoorTimer);
 
         // >>>End of game condition<<<
         if (redDoorTimer[i] >= 3) { // 2*2000 = 4000 = 4 seconds. If any door is left red for 4 seconds...
@@ -112,7 +111,8 @@ $(document).ready(function(){
         var characterLeft = $character.offset().left; // calculate sides of character
         var characterRight = characterLeft + $character.width(); // calculate sides of character
         //change direction character is facing
-        $('.character').attr('id','right');
+        $character[0].classList.remove(`${$character[0].classList[1]}`); // remove the class of whatever direction you are facing
+        $character.addClass('right'); // and add the class of the direction you need to now be facing
 
         if (characterRight < (roomRight - 2)) { // boundary of the room
           $character.animate({left: "+=2"}, 0);
@@ -124,7 +124,8 @@ $(document).ready(function(){
         var characterLeft = $character.offset().left;
 
         //change direction character is facing
-        $('.character').attr('id','left');
+        $character[0].classList.remove(`${$character[0].classList[1]}`);
+        $character.addClass('left');
 
         if (characterLeft > roomLeft) {
           $character.animate({left: "-=2"}, 0);
@@ -137,7 +138,8 @@ $(document).ready(function(){
         var characterBottom = characterTop + $character.height();
 
         //change direction character is facing
-        $('.character').attr('id','front');
+        $character[0].classList.remove(`${$character[0].classList[1]}`);
+        $character.addClass('front');
 
         if (characterBottom < (roomBottom - 2)) {
           $character.animate({top: "+=2"}, 0);
@@ -149,7 +151,8 @@ $(document).ready(function(){
         var characterTop = $character.offset().top;
 
         //change direction character is facing
-        $('.character').attr('id','back');
+        $character[0].classList.remove(`${$character[0].classList[1]}`);
+        $character.addClass('back');
 
         if (characterTop > roomTop) {
           $character.animate({top: "-=2"}, 0);
