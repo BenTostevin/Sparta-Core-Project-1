@@ -12,6 +12,7 @@
   height: 54px;
   width: 30px;
   position: absolute;
+  padding: none;
 }
 
 .front {
