@@ -9,6 +9,11 @@ $(document).ready(function(){
 
   var interval;
 
+  var $character = $('.character');
+  var $room = $('.room');
+  var $door = $('.door');
+  var $redDoor = $('.redDoor');
+
   var $door0 = $('.door0');
   var $door1 = $('.door1');
   var $door2 = $('.door2');
@@ -18,10 +23,6 @@ $(document).ready(function(){
   var $door6 = $('.door6');
   var $door7 = $('.door7');
 
-  var $character = $('.character');
-  var $room = $('.room');
-  var $door = $('.door');
-  var $redDoor = $('.redDoor');
 
   // keeps track of how long a red door has been left red for.
   var redDoorTimer = [0, 0, 0, 0, 0, 0, 0, 0];
@@ -62,8 +63,10 @@ $(document).ready(function(){
 
     // check red doors start - first check if there is a redDoor already. If so, add 1 to it
     for (var i = 0; i < 8; i++) {
-      if (($(`.door${i}`)[0].classList[1] == 'redDoor')) {
+      if (($(`.door${i}`)[0].classList[2] == 'redDoor')) {
+
         redDoorTimer[i] += 1;
+        console.log(redDoorTimer);
 
         // >>>End of game condition<<<
         if (redDoorTimer[i] >= 3) { // 2*2000 = 4000 = 4 seconds. If any door is left red for 4 seconds...
