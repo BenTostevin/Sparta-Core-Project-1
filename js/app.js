@@ -3,14 +3,23 @@ $(document).ready(function(){
   var $instructions = $('.instructions');
   var $gameOver = $('.gameOver');
 
-  var $startButton = $('#startButton');
-  var $instructionsButton = $('#instructionsButton');
-  var $restart = $('#restart');
+  var $startButton = $('.startButton');
+  var $instructionsButton = $('.instructionsButton');
+  var $restart = $('.restart');
 
   var interval;
 
+  var $door0 = $('.door0');
+  var $door1 = $('.door1');
+  var $door2 = $('.door2');
+  var $door3 = $('.door3');
+  var $door4 = $('.door4');
+  var $door5 = $('.door5');
+  var $door6 = $('.door6');
+  var $door7 = $('.door7');
+
   var $character = $('.character');
-  var $room = $('#room');
+  var $room = $('.room');
   var $door = $('.door');
   var $redDoor = $('.redDoor');
 
@@ -42,7 +51,7 @@ $(document).ready(function(){
     //might need a function here to check the variable 'alive'
     if (alive = true) {
       score += 1; // score goes up by 10 points every second
-      $('#score')[0].textContent = score;
+      $('.score')[0].textContent = score;
     }
   }
   // keeping score - end
@@ -53,7 +62,7 @@ $(document).ready(function(){
 
     // check red doors start - first check if there is a redDoor already. If so, add 1 to it
     for (var i = 0; i < 8; i++) {
-      if (($(`#door${i}`)[0].classList[1] == 'redDoor')) {
+      if (($(`.door${i}`)[0].classList[1] == 'redDoor')) {
         redDoorTimer[i] += 1;
 
         // >>>End of game condition<<<
@@ -62,7 +71,7 @@ $(document).ready(function(){
           clearInterval(intruderInterval) // game stops running
           clearInterval(pressKeys) // disables keys after game
           $gameOver.toggle(); // brings up game over screen
-          $('#yourScore')[0].textContent = score;
+          $('.yourScore')[0].textContent = score;
         }
       }
     }
@@ -70,7 +79,7 @@ $(document).ready(function(){
 
     var randomEmptyDoor = Math.floor(Math.random()*emptyDoors.length); // randomly selects an empty door
 
-    $(`#door${emptyDoors[randomEmptyDoor]}`).toggleClass('redDoor'); // adds the class of that door, hence changing colour
+    $(`.door${emptyDoors[randomEmptyDoor]}`).toggleClass('redDoor'); // adds the class of that door, hence changing colour
     occupiedDoors.push(emptyDoors[randomEmptyDoor]);
 
     emptyDoors.splice(randomEmptyDoor, 1); // removes the newly occupied door from the emptyDoors array
@@ -148,13 +157,13 @@ $(document).ready(function(){
         // if you are in a red square
         for (var i = 0; i < occupiedDoors.length; i++) { // check all redDoors
           // to check if you are in a red box, check that all of the character's sides are inside the boxes' sides
-          if ($(`#door${occupiedDoors[i]}`)[0].offsetLeft <= $character[0].offsetLeft &&
-          $(`#door${occupiedDoors[i]}`)[0].offsetLeft + 50 >= $character[0].offsetLeft && // 40 is the difference between the width/height of the door hitbox and the width/height of the character
-          $(`#door${occupiedDoors[i]}`)[0].offsetTop <= $character[0].offsetTop &&
-          $(`#door${occupiedDoors[i]}`)[0].offsetTop + 26 >= $character[0].offsetTop) {
+          if ($(`.door${occupiedDoors[i]}`)[0].offsetLeft <= $character[0].offsetLeft &&
+          $(`.door${occupiedDoors[i]}`)[0].offsetLeft + 50 >= $character[0].offsetLeft && // 40 is the difference between the width/height of the door hitbox and the width/height of the character
+          $(`.door${occupiedDoors[i]}`)[0].offsetTop <= $character[0].offsetTop &&
+          $(`.door${occupiedDoors[i]}`)[0].offsetTop + 26 >= $character[0].offsetTop) {
 
             // remember the door that you are currently at
-            var targetDoor = $(`#door${occupiedDoors[i]}`);
+            var targetDoor = $(`.door${occupiedDoors[i]}`);
 
             // change door back to green
             targetDoor.removeClass('redDoor');
