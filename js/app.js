@@ -61,7 +61,7 @@ $(document).ready(function(){
 
         // add red door timer here
         for (var i = 0; i < 8; i++) {
-          if (($(`.door${i}`)[0].classList[1] == 'redDoor')) {
+          if (($(`.door${i}`)[0].classList[3] == 'redDoor')) {
             $(`.door${i}`)[0].textContent -= 1;
           }
         }
@@ -108,6 +108,8 @@ $(document).ready(function(){
 
     // change door back to green
     targetDoor.removeClass('redDoor');
+
+    targetDoor[0].textContent="";
 
     redDoorTimer[occupiedDoors[doorNumber]] = 0;
     emptyDoors.push(occupiedDoors[doorNumber]) // adds door back to emptyDoors array
