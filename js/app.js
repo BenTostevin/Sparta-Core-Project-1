@@ -169,6 +169,7 @@ $(document).ready(function(){
   }
   // end pressed a key
 
+  // start game
   $startButton.click(function(){
     $instructions.toggle();
     scoreInterval = setInterval(addScore, 100);
@@ -176,6 +177,7 @@ $(document).ready(function(){
     pressKeys = setInterval(movePerson, 10);
   });
 
+  // restart game
   $restart.click(function() {
     location.reload();
   });
