@@ -13,6 +13,8 @@
   height: 54px;
   width: 36px;
   position: absolute;
+  border: 1px black solid;
+  padding: none;
 }
 
 #front {

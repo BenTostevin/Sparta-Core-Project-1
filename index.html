@@ -13,25 +13,42 @@
 
   <div id="room">
 
-    <div class="door" id="door0"></div>
-    <div class="door" id="door1"></div>
-    <div class="door" id="door2"></div>
-    <div class="door" id="door3"></div>
-    <div class="door" id="door4"></div>
-    <div class="door" id="door5"></div>
-    <div class="door" id="door6"></div>
-    <div class="door" id="door7"></div>
+    <div class="door" id="door0">
+      <span id="door0time"></span>
+    </div>
+    <div class="door" id="door1">
+      <span id="door1time"></span>
+    </div>
+    <div class="door" id="door2">
+      <span id="door2time"></span>
+    </div>
+    <div class="door" id="door3">
+      <span id="door3time"></span>
+    </div>
+    <div class="door" id="door4">
+      <span id="door4time"></span>
+    </div>
+    <div class="door" id="door5">
+      <span id="door5time"></span>
+    </div>
+    <div class="door" id="door6">
+      <span id="door6time"></span>
+    </div>
+    <div class="door" id="door7">
+      <span id="door7time"></span>
+    </div>
 
     <div class="character" id="front"></div>
 
     <div class="score">
-      <span id="score"></span>
+      <p>Time: <span id="timer">0</span> seconds</p>
+      <p>Score: <span id="score"></span></p>
     </div>
 
     <div class="instructions">
       <h1>Instructions</h1>
       <p>You are in a room with eight doors. There are monsters outside trying to break in and attack you. The aim of the game is to stay alive as long as possible.</p>
-      <p>Whenever a door changes colour, this means a monster is trying to break in and attack you. After the door changes colour, you have 4 seconds to go that door and protect it by pressing space bar before the monster breaks in. When a monster does break in, it is game over.</p>
+      <p>Whenever a door changes colour, this means a monster is trying to break in and attack you. After the door changes colour, you have only a few seconds to go that door and protect it by pressing space bar before the monster breaks in. When a monster does break in, it is game over.</p>
       <button id="startButton">Start</button>
     </div>
 
