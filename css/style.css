@@ -6,8 +6,8 @@
   background-image: url(../images/Room400x400.png);
   background-repeat: no-repeat;
   background-size: cover;
-  font-family: Verdana;
-  font-size: 13px;
+  font-family: 'Times New Roman';
+  font-size: 16px;
 }
 
 /* Gameplay */
@@ -130,7 +130,6 @@
 }
 
 button {
-  font-family: Verdana;
   color: white;
   font-size: 14px;
   background-color: rgb(66, 66, 66);
@@ -148,10 +147,9 @@ button {
 }
 
 h1 {
-  font-family: impact;
-  font-size: 38px;
-  color: rgb(190, 190, 190);
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  font-family: verdana;
+  font-size: 32px;
+  color: white;
   margin-top: 28px;
   margin-bottom: 6px;
   text-align: center;
@@ -159,6 +157,7 @@ h1 {
 
 /* Game-over screen */
 .gameOver {
+  font-family: verdana;
   display: none;
   text-align: center;
   font-size: 1.25rem;
