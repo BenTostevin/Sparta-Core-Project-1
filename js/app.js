@@ -172,9 +172,9 @@ $(document).ready(function(){
 
       if (keySelected == 32) {
         // if you are in a red square
+
         for (var i = 0; i < occupiedDoors.length; i++) { // check all redDoors
           // to check if you are in a red box, check that all of the character's sides are inside the boxes' sides
-
           if (occupiedDoors[i] <= 3) {
             if ($(`.door${occupiedDoors[i]}`)[0].offsetLeft <= $character[0].offsetLeft &&
             $(`.door${occupiedDoors[i]}`)[0].offsetLeft + 50 >= $character[0].offsetLeft && // 50 is the difference between the width of the door hitbox and the width of the character
