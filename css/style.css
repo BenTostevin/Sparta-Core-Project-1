@@ -1,4 +1,4 @@
-#room {
+.room {
   width: 400px;
   height: 400px;
   margin: auto;
@@ -12,29 +12,28 @@
   height: 54px;
   width: 30px;
   position: absolute;
-  border: 1px black solid;
   padding: none;
 }
 
-#front {
+.front {
   background-image: url(../images/indianajonesFront.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-#back {
+.back {
   background-image: url(../images/indianajonesBack.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-#left {
+.left {
   background-image: url(../images/indianajonesLeft.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-#right {
+.right {
   background-image: url(../images/indianajonesRight.png);
   background-repeat: no-repeat;
   background-size: cover;
@@ -65,58 +64,62 @@
 }
 
 .door {
-  height: 80px;
-  width: 80px;
   background: green;
   position: absolute;
   opacity: 0.5;
 }
 
-.redDoor {
-  height: 80px;
+.doorTopBottom {
+  height: 10px;
   width: 80px;
+}
+
+.doorSide {
+  height: 80px;
+  width: 10px;
+}
+
+.redDoor {
   background: red;
-  position: absolute;
-  opacity: 0.5;
 }
 
 /* Positions of doors */
-#door0 {
+.door0 {
   left: 70px;
   top: 0px;
 }
 
-#door1 {
+.door1 {
   left: 250px;
   top: 0px;
 }
 
-#door2 {
+.door2 {
   left: 0px;
   top: 70px;
 }
 
-#door3 {
+.door3 {
   left: 0px;
   top: 250px;
 }
 
-#door4 {
-  left: 320px;
+.door4 {
+  left: 390px;
   top: 70px;
 }
 
-#door5 {
-  left: 320px;
+.door5 {
+  left: 390px;
   top: 250px;
 }
 
-#door6 {
+.door6 {
   left: 70px;
-  top: 320px;
+  top: 390px;
 }
 
-#door7 {
+.door7 {
   left: 250px;
-  top: 320px;
+  top: 390px;
 }
