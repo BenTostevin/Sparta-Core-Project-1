@@ -12,7 +12,7 @@ $(document).ready(function(){
 
   var $character = $('.character');
   var $room = $('.room');
-  
+
 
   // keeps track of how long a red door has been left red for.
   var redDoorTimer = [0, 0, 0, 0, 0, 0, 0, 0];
@@ -184,7 +184,7 @@ $(document).ready(function(){
           // to check if you are in a red box, check that all of the character's sides are inside the boxes' sides
           if (occupiedDoors[i] <= 3) {
             if ($(`.door${occupiedDoors[i]}`)[0].offsetLeft <= $character[0].offsetLeft &&
-            $(`.door${occupiedDoors[i]}`)[0].offsetLeft + 55 >= $character[0].offsetLeft && // 50 is the difference between the width of the door hitbox and the width of the character
+            $(`.door${occupiedDoors[i]}`)[0].offsetLeft + 55 >= $character[0].offsetLeft && // 55 is the difference between the width of the door hitbox and the width of the character
             $(`.door${occupiedDoors[i]}`)[0].offsetTop <= $character[0].offsetTop &&
             $(`.door${occupiedDoors[i]}`)[0].offsetTop + 35 >= $character[0].offsetTop) {
 
