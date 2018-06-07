@@ -1,7 +1,7 @@
 # Sparta-Core-Project-1
 
 ##Purpose
-This game was built for a project during my time in training with Sparta Global, where I was required to build a browser based game using HTML, CSS and JavaScript.
+This game was built for a project during my time in training with Sparta Global, where I was required to build a browser-based game using HTML, CSS and JavaScript.
 
 The purpose of the project was to reinforce my learning, demonstrate my knowledge and to demonstrate my ability to push myself forward.
 
@@ -20,7 +20,7 @@ Here, a game over screen, also displaying your score, is displayed. The game ove
 
 ##Issues
 ###Movement
-Sometimes the game does not run as smootly as intended. This is because I chose to use the 'keydown' function to move the character. As 'keydown' fires off a signal every millisecond, this can cause the game to slow down, jump and lag. This problem could be solved by researching another function which does not fire signals so frequently. The code is shown below:
+Sometimes the game does not run as smoothly as intended. This is because I chose to use the 'keydown' function to move the character. As 'keydown' fires off a signal every millisecond, this can cause the game to slow down, jump and lag. This problem could be solved by researching another function which does not fire signals so frequently. The code is shown below:
 
 ```js
 var keys = {};
