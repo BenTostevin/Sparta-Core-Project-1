@@ -140,16 +140,6 @@ $(document).ready(function(){
         }
       }
 
-      var tempArr = [];
-      $(document).keypress(function(e){
-        if (e.keyCode == 32) {
-          tempArr.push(e.keyCode);
-        }
-        if (tempArr.length > 3000) {
-          console.log('fixed');
-        }
-      })
-
       if (keySelected == 32) {
         // if you are in a red square
         for (var i = 0; i < occupiedDoors.length; i++) { // check all redDoors
@@ -186,7 +176,6 @@ $(document).ready(function(){
   });
 
   $restart.click(function() {
-    console.log('working');
     location.reload();
   });
 
