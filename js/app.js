@@ -63,7 +63,7 @@ $(document).ready(function(){
 
     // check red doors start - first check if there is a redDoor already. If so, add 1 to it
     for (var i = 0; i < 8; i++) {
-      if (($(`.door${i}`)[0].classList[2] == 'redDoor')) {
+      if (($(`.door${i}`)[0].classList[3] == 'redDoor')) {
 
         redDoorTimer[i] += 1;
 
@@ -163,20 +163,53 @@ $(document).ready(function(){
         // if you are in a red square
         for (var i = 0; i < occupiedDoors.length; i++) { // check all redDoors
           // to check if you are in a red box, check that all of the character's sides are inside the boxes' sides
-          if ($(`.door${occupiedDoors[i]}`)[0].offsetLeft <= $character[0].offsetLeft &&
-          $(`.door${occupiedDoors[i]}`)[0].offsetLeft + 50 >= $character[0].offsetLeft && // 40 is the difference between the width/height of the door hitbox and the width/height of the character
-          $(`.door${occupiedDoors[i]}`)[0].offsetTop <= $character[0].offsetTop &&
-          $(`.door${occupiedDoors[i]}`)[0].offsetTop + 26 >= $character[0].offsetTop) {
+          // console.log($(`.door${occupiedDoors[i]}`)[0].classList[2]);
+          if (occupiedDoors[i] <= 3) {
+            if ($(`.door${occupiedDoors[i]}`)[0].offsetLeft <= $character[0].offsetLeft &&
+            $(`.door${occupiedDoors[i]}`)[0].offsetLeft + 50 >= $character[0].offsetLeft && // 40 is the difference between the width/height of the door hitbox and the width/height of the character
+            $(`.door${occupiedDoors[i]}`)[0].offsetTop <= $character[0].offsetTop &&
+            $(`.door${occupiedDoors[i]}`)[0].offsetTop + 26 >= $character[0].offsetTop) {
 
-            // remember the door that you are currently at
-            var targetDoor = $(`.door${occupiedDoors[i]}`);
+              var targetDoor = $(`.door${occupiedDoors[i]}`);
 
-            // change door back to green
-            targetDoor.removeClass('redDoor');
+              // change door back to green
+              targetDoor.removeClass('redDoor');
 
-            redDoorTimer[occupiedDoors[i]] = 0;
-            emptyDoors.push(occupiedDoors[i]) // adds door back to emptyDoors array
-            occupiedDoors.splice(i,1); // remove this door from occupiedDoors array
+              redDoorTimer[occupiedDoors[i]] = 0;
+              emptyDoors.push(occupiedDoors[i]) // adds door back to emptyDoors array
+              occupiedDoors.splice(i,1); // remove this door from occupiedDoors array
+            }
+
+          } else if (occupiedDoors[i] >= 4 && occupiedDoors[i] <= 5) {
+            if ($(`.door${occupiedDoors[i]}`)[0].offsetLeft - 70 <= $character[0].offsetLeft &&
+            $(`.door${occupiedDoors[i]}`)[0].offsetLeft - 20 >= $character[0].offsetLeft && // 40 is the difference between the width/height of the door hitbox and the width/height of the character
+            $(`.door${occupiedDoors[i]}`)[0].offsetTop <= $character[0].offsetTop &&
+            $(`.door${occupiedDoors[i]}`)[0].offsetTop + 26 >= $character[0].offsetTop) {
+
+              var targetDoor = $(`.door${occupiedDoors[i]}`);
+
+              // change door back to green
+              targetDoor.removeClass('redDoor');
+
+              redDoorTimer[occupiedDoors[i]] = 0;
+              emptyDoors.push(occupiedDoors[i]) // adds door back to emptyDoors array
+              occupiedDoors.splice(i,1); // remove this door from occupiedDoors array
+            }
+          } else if (occupiedDoors[i] >= 6) {
+            if ($(`.door${occupiedDoors[i]}`)[0].offsetLeft <= $character[0].offsetLeft &&
+            $(`.door${occupiedDoors[i]}`)[0].offsetLeft + 50 >= $character[0].offsetLeft && // 40 is the difference between the width/height of the door hitbox and the width/height of the character
+            $(`.door${occupiedDoors[i]}`)[0].offsetTop - 70 <= $character[0].offsetTop &&
+            $(`.door${occupiedDoors[i]}`)[0].offsetTop - 44 >= $character[0].offsetTop) {
+
+              var targetDoor = $(`.door${occupiedDoors[i]}`);
+
+              // change door back to green
+              targetDoor.removeClass('redDoor');
+
+              redDoorTimer[occupiedDoors[i]] = 0;
+              emptyDoors.push(occupiedDoors[i]) // adds door back to emptyDoors array
+              occupiedDoors.splice(i,1); // remove this door from occupiedDoors array
+            }
           }
         }
       }
