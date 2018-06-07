@@ -8,6 +8,10 @@
   background-size: cover;
 }
 
+.game {
+  position: absolute;
+}
+
 .character {
   height: 54px;
   width: 30px;
@@ -61,6 +65,7 @@
 
 .score {
   position: absolute;
+  display: inline;
 }
 
 .door {
