@@ -3,15 +3,14 @@
   height: 400px;
   margin: auto;
   position: relative;
-  background-image: url(../images/floor.jpg);
+  background-image: url(../images/Room400x400.png);
   background-repeat: no-repeat;
   background-size: cover;
-  border: 1px black solid;
 }
 
 .character {
   height: 54px;
-  width: 36px;
+  width: 30px;
   position: absolute;
   border: 1px black solid;
   padding: none;
@@ -23,11 +22,29 @@
   background-size: cover;
 }
 
+#back {
+  background-image: url(../images/indianajonesBack.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#left {
+  background-image: url(../images/indianajonesLeft.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#right {
+  background-image: url(../images/indianajonesRight.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .instructions {
   display: block;
   width: 90%;
   height: 90%;
-  background: black;
+  background-image: url(../images/Room2.png);
   color: white;
   position: absolute;
   padding: 5%;
@@ -37,7 +54,7 @@
   display: none;
   width: 90%;
   height: 90%;
-  background: black;
+  background-image: url(../images/Room2.png);
   color: white;
   position: absolute;
   padding: 5%;

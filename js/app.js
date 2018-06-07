@@ -26,6 +26,11 @@ $(document).ready(function(){
   var roomRight = roomLeft + $room.width();
   var roomBottom = roomTop + $room.height();
 
+  var characterTop = $character.offset().top;
+  var characterBottom = characterTop + $character.height();
+  var characterLeft = $character.offset().left; // calculate sides of character
+  var characterRight = characterLeft + $character.width(); // calculate sides of character
+
 
   // keeping score - start
   var score = 0;
@@ -89,7 +94,6 @@ $(document).ready(function(){
 
 
   // pressed a key start
-
   var keys = {};
 
   // When a key is pushed down, it is added to the 'keys' object
@@ -110,16 +114,23 @@ $(document).ready(function(){
       if (keySelected == 39) { // if key exists, and is loosely equal to 39
         var characterLeft = $character.offset().left; // calculate sides of character
         var characterRight = characterLeft + $character.width(); // calculate sides of character
-        if (characterRight < roomRight) { // boundary of the room
-          $character.animate({left: "+=5"}, 1);
+        //change direction character is facing
+        $('.character').attr('id','right');
+
+        if (characterRight < (roomRight - 2)) { // boundary of the room
+          $character.animate({left: "+=2"}, 0);
         }
       }
 
       // Move left
       if (keySelected == 37) {
         var characterLeft = $character.offset().left;
+
+        //change direction character is facing
+        $('.character').attr('id','left');
+
         if (characterLeft > roomLeft) {
-          $character.animate({left: "-=5"}, 1);
+          $character.animate({left: "-=2"}, 0);
         }
       }
 
@@ -127,16 +138,24 @@ $(document).ready(function(){
       if (keySelected == 40) {
         var characterTop = $character.offset().top;
         var characterBottom = characterTop + $character.height();
-        if (characterBottom < roomBottom) {
-          $character.animate({top: "+=5"}, 1);
+
+        //change direction character is facing
+        $('.character').attr('id','front');
+
+        if (characterBottom < (roomBottom - 2)) {
+          $character.animate({top: "+=2"}, 0);
         }
       }
 
       // move up
       if (keySelected == 38) {
         var characterTop = $character.offset().top;
+
+        //change direction character is facing
+        $('.character').attr('id','back');
+
         if (characterTop > roomTop) {
-          $character.animate({top: "-=5"}, 1);
+          $character.animate({top: "-=2"}, 0);
         }
       }
 
@@ -144,10 +163,10 @@ $(document).ready(function(){
         // if you are in a red square
         for (var i = 0; i < occupiedDoors.length; i++) { // check all redDoors
           // to check if you are in a red box, check that all of the character's sides are inside the boxes' sides
-          if ($(`#door${occupiedDoors[i]}`)[0].offsetLeft < $character[0].offsetLeft &&
-          $(`#door${occupiedDoors[i]}`)[0].offsetLeft + 48 > $character[0].offsetLeft && // 40 is the difference between the width/height of the door hitbox and the width/height of the character
-          $(`#door${occupiedDoors[i]}`)[0].offsetTop < $character[0].offsetTop &&
-          $(`#door${occupiedDoors[i]}`)[0].offsetTop + 32 > $character[0].offsetTop) {
+          if ($(`#door${occupiedDoors[i]}`)[0].offsetLeft <= $character[0].offsetLeft &&
+          $(`#door${occupiedDoors[i]}`)[0].offsetLeft + 50 >= $character[0].offsetLeft && // 40 is the difference between the width/height of the door hitbox and the width/height of the character
+          $(`#door${occupiedDoors[i]}`)[0].offsetTop <= $character[0].offsetTop &&
+          $(`#door${occupiedDoors[i]}`)[0].offsetTop + 26 >= $character[0].offsetTop) {
 
             // remember the door that you are currently at
             var targetDoor = $(`#door${occupiedDoors[i]}`);
@@ -168,13 +187,15 @@ $(document).ready(function(){
   }
   // end pressed a key
 
+  // start game
   $startButton.click(function(){
     $instructions.toggle();
     scoreInterval = setInterval(addScore, 100);
     intruderInterval = setInterval(spawnIntruder, 1800);
-    pressKeys = setInterval(movePerson, 20);
+    pressKeys = setInterval(movePerson, 10);
   });
 
+  // restart game
   $restart.click(function() {
     location.reload();
   });
