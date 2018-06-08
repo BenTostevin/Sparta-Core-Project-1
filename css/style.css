@@ -6,63 +6,42 @@
   background-image: url(../images/Room400x400.png);
   background-repeat: no-repeat;
   background-size: cover;
+  font-family: 'Times New Roman';
+  font-size: 16px;
 }
 
+/* Gameplay */
+.game {
+  position: absolute;
+}
+
+/* Character */
 .character {
-  height: 54px;
-  width: 30px;
+  height: 45px;
+  width: 25px;
   position: absolute;
   padding: none;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .front {
   background-image: url(../images/indianajonesFront.png);
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .back {
   background-image: url(../images/indianajonesBack.png);
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .left {
   background-image: url(../images/indianajonesLeft.png);
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .right {
   background-image: url(../images/indianajonesRight.png);
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
-.instructions {
-  display: block;
-  width: 90%;
-  height: 90%;
-  background-image: url(../images/Room2.png);
-  color: white;
-  position: absolute;
-  padding: 5%;
-}
-
-.gameOver {
-  display: none;
-  width: 90%;
-  height: 90%;
-  background-image: url(../images/Room2.png);
-  color: white;
-  position: absolute;
-  padding: 5%;
-}
-
-.score {
-  position: absolute;
-}
-
+/* Doors */
 .door {
   background: green;
   position: absolute;
@@ -70,20 +49,23 @@
 }
 
 .doorTopBottom {
-  height: 10px;
+  height: 20px;
   width: 80px;
 }
 
 .doorSide {
   height: 80px;
-  width: 10px;
+  width: 20px;
 }
 
 .redDoor {
   background: red;
+  font-family: arial black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Positions of doors */
 .door0 {
   left: 70px;
   top: 0px;
@@ -105,21 +87,89 @@
 }
 
 .door4 {
-  left: 390px;
+  left: 380px;
   top: 70px;
 }
 
 .door5 {
-  left: 390px;
+  left: 380px;
   top: 250px;
 }
 
 .door6 {
   left: 70px;
-  top: 390px;
+  top: 380px;
 }
 
 .door7 {
   left: 250px;
-  top: 390px;
+  top: 380px;
+}
+
+/* Scoreboard */
+.scoreboard {
+  position: absolute;
+  display: block;
+  left: 4px;
+  top: 31px;
+  width: 100px;
+}
+
+.scoreboard p {
+  font-size: 13px;
+  margin: 3px;
+}
+
+/* Text screens */
+.instructions, .gameOver {
+  width: 90%;
+  height: 90%;
+  background-image: url(../images/Room400x400.png);
+  color: white;
+  position: absolute;
+  padding: 5%;
+}
+
+button {
+  color: white;
+  font-size: 14px;
+  background-color: rgb(66, 66, 66);
+  border: none;
+  border-radius: 4px;
+  padding: 5px;
+  height: 30px;
+  width: 60px;
+  box-shadow: 2.5px 2.5px 2.5px rgb(38, 38, 38);
+}
+
+/* Instructions menu */
+.instructions {
+  display: block;
+}
+
+h1 {
+  font-family: verdana;
+  font-size: 32px;
+  color: white;
+  margin-top: 28px;
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+/* Game-over screen */
+.gameOver {
+  font-family: verdana;
+  display: none;
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+.gameOver h2 {
+  margin-top: 115px;
+  margin-bottom: 8px;
+}
+
+.gameOver p {
+  margin-top: 8px;
+  font-size: 1.6em;
 }

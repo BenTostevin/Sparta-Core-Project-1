@@ -4,24 +4,14 @@ $(document).ready(function(){
   var $gameOver = $('.gameOver');
 
   var $startButton = $('.startButton');
-  var $instructionsButton = $('.instructionsButton');
   var $restart = $('.restart');
 
-  var interval;
+  var $score = $('.score');
+  var $timer = $('.timer');
+  var $yourScore = $('.yourScore');
 
   var $character = $('.character');
   var $room = $('.room');
-  var $door = $('.door');
-  var $redDoor = $('.redDoor');
-
-  var $door0 = $('.door0');
-  var $door1 = $('.door1');
-  var $door2 = $('.door2');
-  var $door3 = $('.door3');
-  var $door4 = $('.door4');
-  var $door5 = $('.door5');
-  var $door6 = $('.door6');
-  var $door7 = $('.door7');
 
 
   // keeps track of how long a red door has been left red for.
@@ -53,15 +43,15 @@ $(document).ready(function(){
     //might need a function here to check the variable 'alive'
     if (alive = true) {
       score++; // score goes up by 10 points every second
-      $('.score')[0].textContent = score;
+      $score[0].textContent = score;
 
       if (score % 10 === 0) { // every second
         time++;
-        $('.timer')[0].textContent = time;
+        $timer[0].textContent = time;
 
         // add red door timer here
         for (var i = 0; i < 8; i++) {
-          if (($(`.door${i}`)[0].classList[1] == 'redDoor')) {
+          if (($(`.door${i}`)[0].classList[3] == 'redDoor')) {
             $(`.door${i}`)[0].textContent -= 1;
           }
         }
@@ -86,7 +76,7 @@ $(document).ready(function(){
           clearInterval(intruderInterval) // game stops running
           clearInterval(pressKeys) // disables keys after game
           $gameOver.toggle(); // brings up game over screen
-          $('.yourScore')[0].textContent = score;
+          $yourScore[0].textContent = score;
         }
       }
     }
@@ -108,6 +98,8 @@ $(document).ready(function(){
 
     // change door back to green
     targetDoor.removeClass('redDoor');
+
+    targetDoor[0].textContent="";
 
     redDoorTimer[occupiedDoors[doorNumber]] = 0;
     emptyDoors.push(occupiedDoors[doorNumber]) // adds door back to emptyDoors array
@@ -192,26 +184,26 @@ $(document).ready(function(){
           // to check if you are in a red box, check that all of the character's sides are inside the boxes' sides
           if (occupiedDoors[i] <= 3) {
             if ($(`.door${occupiedDoors[i]}`)[0].offsetLeft <= $character[0].offsetLeft &&
-            $(`.door${occupiedDoors[i]}`)[0].offsetLeft + 50 >= $character[0].offsetLeft && // 50 is the difference between the width of the door hitbox and the width of the character
+            $(`.door${occupiedDoors[i]}`)[0].offsetLeft + 55 >= $character[0].offsetLeft && // 55 is the difference between the width of the door hitbox and the width of the character
             $(`.door${occupiedDoors[i]}`)[0].offsetTop <= $character[0].offsetTop &&
-            $(`.door${occupiedDoors[i]}`)[0].offsetTop + 26 >= $character[0].offsetTop) {
+            $(`.door${occupiedDoors[i]}`)[0].offsetTop + 35 >= $character[0].offsetTop) {
 
               clearIntruder(i);
             }
 
           } else if (occupiedDoors[i] >= 4 && occupiedDoors[i] <= 5) {
-            if ($(`.door${occupiedDoors[i]}`)[0].offsetLeft - 70 <= $character[0].offsetLeft &&
-            $(`.door${occupiedDoors[i]}`)[0].offsetLeft - 20 >= $character[0].offsetLeft &&
+            if ($(`.door${occupiedDoors[i]}`)[0].offsetLeft - 60 <= $character[0].offsetLeft &&
+            $(`.door${occupiedDoors[i]}`)[0].offsetLeft - 5 >= $character[0].offsetLeft &&
             $(`.door${occupiedDoors[i]}`)[0].offsetTop <= $character[0].offsetTop &&
-            $(`.door${occupiedDoors[i]}`)[0].offsetTop + 26 >= $character[0].offsetTop) {
+            $(`.door${occupiedDoors[i]}`)[0].offsetTop + 35 >= $character[0].offsetTop) {
 
               clearIntruder(i);
             }
           } else if (occupiedDoors[i] >= 6) {
             if ($(`.door${occupiedDoors[i]}`)[0].offsetLeft <= $character[0].offsetLeft &&
-            $(`.door${occupiedDoors[i]}`)[0].offsetLeft + 50 >= $character[0].offsetLeft &&
-            $(`.door${occupiedDoors[i]}`)[0].offsetTop - 70 <= $character[0].offsetTop &&
-            $(`.door${occupiedDoors[i]}`)[0].offsetTop - 44 >= $character[0].offsetTop) {
+            $(`.door${occupiedDoors[i]}`)[0].offsetLeft + 55 >= $character[0].offsetLeft &&
+            $(`.door${occupiedDoors[i]}`)[0].offsetTop - 60 <= $character[0].offsetTop &&
+            $(`.door${occupiedDoors[i]}`)[0].offsetTop - 25 >= $character[0].offsetTop) {
 
               clearIntruder(i);
             }
